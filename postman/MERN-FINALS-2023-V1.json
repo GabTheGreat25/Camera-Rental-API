@@ -1,0 +1,1126 @@
+{
+	"info": {
+		"_postman_id": "98aa3360-1896-44f7-817a-254c323c1b8b",
+		"name": "MERN-FINALS-2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "AUTH",
+					"item": [
+						{
+							"name": "LOGIN A USER",
+							"id": "b47f263d-810a-4bf6-b727-6910e02e2d98",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admingab@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}"
+								},
+								"url": "{{URI}}{{V1}}login"
+							},
+							"response": []
+						},
+						{
+							"name": "LOGOUT",
+							"id": "bc791f54-b849-496b-bb86-42c5e9c64b19",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": "{{URI}}{{V1}}/logout"
+							},
+							"response": []
+						}
+					],
+					"id": "4e313355-03cb-45fb-8158-247b61c83fbf",
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f8ab0a36-51bf-46ae-87ed-65886e051db8",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "28e49008-d05d-41f1-8674-76d91f503ea4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "GET ALL USERS",
+					"id": "565bb007-7a91-4054-a04e-81e87bee2b0b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}{{V1}}users?page=1&limit=100",
+							"host": [
+								"{{URI}}{{V1}}users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search",
+									"value": "gab",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "email:desc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "name:renzo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE USER",
+					"id": "1a616bb9-4e3f-496d-b3a1-6cedff76835e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": "{{URI}}{{V1}}user/6450ed27193678cee513a206"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE A USER",
+					"id": "f34f90b2-daef-4626-8464-6e9896afa9c0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "testz",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "testz@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "roles",
+									"value": "Admin, Employee",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/gabriel/Downloads/Images/security.png"
+								}
+							]
+						},
+						"url": "{{URI}}{{V1}}users"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A USER",
+					"id": "25ac4316-586c-4190-af2d-b5cffcaa2b67",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "gabgabgabz",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "gabbzz@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "roles",
+									"value": "Admin, Employee",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [
+										"/C:/Users/gabriel/Downloads/Images/gab-1x1.jpg",
+										"/C:/Users/gabriel/Downloads/Images/insomnia.png"
+									]
+								}
+							]
+						},
+						"url": "{{URI}}{{V1}}user/edit/643cc53bc4855ddb51f84896"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE A USER",
+					"id": "1b5c5e7c-dc79-4377-bb4e-9081e0c45252",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{URI}}{{V1}}user/6422fc16f1eadb4b8f9f3204"
+					},
+					"response": []
+				},
+				{
+					"name": "FORGOT PASSWORD",
+					"id": "94290fd3-defd-4af8-a89d-061645bde44b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admingab@gmail.com\"\r\n    \r\n} "
+						},
+						"url": "{{URI}}{{V1}}Forgotpassword"
+					},
+					"response": []
+				},
+				{
+					"name": "RESET PASSWORD",
+					"id": "a88679da-038f-46ae-ba0c-c1df5cdd3599",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"12345678\",\r\n    \"confirmPassword\": \"12345678\" \r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{URI}}{{V1}}password/reset/715dbc99-9360-4d10-a3b2-7acf895c6273?email=employee%40gmail.com",
+							"host": [
+								"{{URI}}{{V1}}password"
+							],
+							"path": [
+								"reset",
+								"715dbc99-9360-4d10-a3b2-7acf895c6273"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "employee%40gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A USER'S PASSWORD",
+					"id": "3ff03d68-b340-4392-a979-46b6a8471106",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \t\"oldPassword\": \"12345678\",\r\n \t\"newPassword\":\"1234567\",\r\n    \"confirmPassword\":\"1234567\"\r\n}"
+						},
+						"url": "{{URI}}{{V1}}/updatePassword/64391efec821b5bd412e14fa"
+					},
+					"response": []
+				}
+			],
+			"id": "6e8c52fd-d244-469e-b7cb-faaba5f41690"
+		},
+		{
+			"name": "NOTES",
+			"item": [
+				{
+					"name": "GET ALL NOTES",
+					"id": "bfb941d7-d559-4194-82c3-cb66113fbb07",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}{{V1}}notes?page=1&limit=100",
+							"host": [
+								"{{URI}}{{V1}}notes"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Sesperez",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "title:asc",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "title:Sesperez",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE NOTE",
+					"id": "3fe68dfd-47ee-4697-bb34-9a09ffc21e42",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": "{{URI}}{{V1}}note/643f5cba884e3f868cb35a66"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE A NOTE",
+					"id": "1c811ed0-51cb-4766-97f0-852b0ae2b1b9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"643f5f685f467b155d562982\",\r\n    \"title\": \"Wazzup\",\r\n    \"text\": \"Coding Is Fun\"\r\n}"
+						},
+						"url": "{{URI}}{{V1}}notes"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A NOTE",
+					"id": "1bfaa3b6-702b-49ea-aa1a-4a9fb1a21300",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"643ed03db2e4679a31b440f4\",\r\n    \"title\": \"Asus\",\r\n    \"text\": \"Coding Is Life\",\r\n    \"completed\": false\r\n}"
+						},
+						"url": "{{URI}}{{V1}}note/edit/643f48d8884e3f868cb35933"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE A NOTE",
+					"id": "bd447530-4d3e-488a-9315-9e6c138c9618",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{URI}}{{V1}}note/64098910dcea167c88ee92a0"
+					},
+					"response": []
+				}
+			],
+			"id": "d2d5938d-5f2f-4249-be37-913f0f8ebabe"
+		},
+		{
+			"name": "COMMENTS",
+			"item": [
+				{
+					"name": "GET ALL COMMENTS",
+					"id": "4e2f7eea-89cb-468c-b7f1-3e0c880b683c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}{{V1}}comments?page=1&limit=100",
+							"host": [
+								"{{URI}}{{V1}}comments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "text:desc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "ratings:2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE COMMENT",
+					"id": "2d51f98c-013e-4117-ab29-1eb790fa173d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": "{{URI}}{{V1}}comment/644e1a204b2726799722751c"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE A COMMENT",
+					"id": "1c0319f4-f360-4e07-a96d-ffabc79dcfa3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " "
+						},
+						"url": "{{URI}}{{V1}}comments"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A COMMENT",
+					"id": "2dad574b-8057-4545-ba32-f2f1ee737477",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction\": \"644d44a91f1ac67fa385430d\",\r\n    \"transService\": \"Grab\",\r\n    \"ratings\": 2,\r\n    \"text\": \"GG\"\r\n}"
+						},
+						"url": "{{URI}}{{V1}}comment/edit/644de5d8273e9417f067e846"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE A COMMENT",
+					"id": "d1268fdf-d78a-483e-9ec3-8be2dce01999",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{URI}}{{V1}}comment/640bd901610d02792f9b55d7"
+					},
+					"response": []
+				}
+			],
+			"id": "71243fde-4640-4a8d-95b1-ee0a915ab782"
+		},
+		{
+			"name": "CAMERAS",
+			"item": [
+				{
+					"name": "GET ALL CAMERA",
+					"id": "f5a12e3a-b386-4e0e-811e-5209cf5df2fa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}{{V1}}cameras?page=1&limit=100",
+							"host": [
+								"{{URI}}{{V1}}cameras"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Canon",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "text:asc",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "price:123123",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE CAMERA",
+					"id": "440be8a8-b9bf-4771-b27b-3eee15040d83",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": "{{URI}}{{V1}}camera/644ab74f0299ecd315a01f86"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE A CAMERA",
+					"id": "9336d512-1051-41bb-844a-4d02d7ecd291",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user",
+									"value": "642183bde96f00a61b997312",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Canon 60F",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Nice camera",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "34534",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/gabriel/Downloads/Images/camera.png"
+								}
+							]
+						},
+						"url": "{{URI}}{{V1}}cameras"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A CAMERA",
+					"id": "619c5bc7-c03c-41cc-9267-4929493fd97c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user",
+									"value": "644cbb253b66237dd7007f27",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Cool Camera",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/gabriel/Downloads/Images/security.png"
+								}
+							]
+						},
+						"url": "{{URI}}{{V1}}camera/edit/644f2db4c63a43b6b2592cf9"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE A CAMERA",
+					"id": "dd586459-ce55-41aa-829e-09ee7ccaa111",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{URI}}{{V1}}camera/642289e964d970c52537a66f"
+					},
+					"response": []
+				}
+			],
+			"id": "6d0a87df-40dd-47b0-9277-46ab0b271b31"
+		},
+		{
+			"name": "TRANSACTIONS",
+			"item": [
+				{
+					"name": "GET ALL TRANSACTIONS",
+					"id": "f5625a40-8832-4a40-af6c-daa7c8f81879",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}{{V1}}transactions?page=1&limit=100",
+							"host": [
+								"{{URI}}{{V1}}transactions"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "pending",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "date:desc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "status:paid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE TRANSACTION",
+					"id": "59419518-a167-47c2-a543-8439355c569f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"url": "{{URI}}{{V1}}transaction/6450ad30f1fadaf7ce5c515b"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE A TRANSACTION",
+					"id": "b0d22e00-c376-4b88-a70d-74a876ade334",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"644f53089b5a54be8c3fbd25\",\r\n  \"cameras\": [\"644cbb2af43dae6761626342\",\"644cbb47f43dae6761626346\"],\r\n  \"status\": \"pending\",\r\n  \"date\": \"2023-12-11\"\r\n}\r\n"
+						},
+						"url": "{{URI}}{{V1}}transactions"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A TRANSACTION",
+					"id": "8cfe26a0-b76e-4416-8294-4da2d0a7841e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"64093e01dc5af14a4dac1614\",\r\n    \"camera\": \"640acc877b7d9314b0a71af0\",\r\n    \"status\": \"pending\",\r\n    \"date\": \"2023-03-14\"\r\n}"
+						},
+						"url": "{{URI}}{{V1}}transaction/edit/640bcf4cdd16e1f18eee6486"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE A TRANSACTION",
+					"id": "886d9500-0073-4efa-bbed-983d40245f39",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{URI}}{{V1}}transaction/640bced47f37478158e52bdd"
+					},
+					"response": []
+				}
+			],
+			"id": "2d73adde-e96a-4517-a9ff-c726a0b72a35"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0771d5fd-8a54-4aff-8dc6-439b57d8fcfa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f304521d-d7c8-4ec0-b467-51ff5f7977b9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5fd3cd7d-0f5b-433c-9d1e-ab955466c50a",
+			"key": "Bearer",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJlbWFpbCI6ImFkbWluZ2FiQGdtYWlsLmNvbSIsInJvbGVzIjpbIkFkbWluIiwiRW1wbG95ZWUiXX0sImlhdCI6MTY4MzM2MzE5MCwiZXhwIjoxNjgzOTY3OTkwfQ.93-pR6LtANiC-rsikyHI1Yn3JkK2XjlpcaJOsrX9Vhc"
+		}
+	]
+}
