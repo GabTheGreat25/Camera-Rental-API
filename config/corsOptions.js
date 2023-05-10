@@ -2,12 +2,15 @@ const allowedOrigins = require("./allowedOrigins");
 const { STATUSCODE } = require("../constants/index");
 
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.indexOf(origin) !== STATUSCODE.NEGATIVE_ONE || !origin) {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== STATUSCODE.NEGATIVE_ONE) {
       callback(null, true);
-    } else callback(new Error("Not allowed by CORS"));
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
   },
   credentials: true,
+  exposedHeaders: ["Access-Control-Allow-Origin"],
 };
 
 module.exports = corsOptions;
